@@ -1,0 +1,43 @@
+<div class="container mt-5 p-10 ">
+    <div class="heading mt-5"><h1>Request Details</h1></div>
+    <div class="container mt-5">
+        <div class="row ">
+            <div class="table-responsive d-flex justify-content-center">
+                <table class="table table-bordered w-75">
+                    <thead>
+                        <tr>
+                            <!-- <th><input class="form-check-input" type="checkbox"
+                                    id="flexCheckDefault">S.No</th> -->
+                            <th>Request Id</th>
+                            <th>Sim Number</th>
+                            <th>Created Date</th>
+                            <th>Request Status</th>
+                            <th>Action</th>
+
+                        </tr>
+                    </thead>
+                    <tr *ngFor="let item of requestedSim; let count= index">
+                        <!-- <td>{{count+1}} </td> -->
+                        <td>{{item.requestid}}</td>
+                        <td> {{item.sim_number}} </td>
+                        <td>{{item.requestedDate}}</td>
+                        <td>
+                            <ul>
+                                <li [ngClass]="item.Status">{{item.Status}}</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <div>
+                                <button [id]="item.requestid"
+                        
+                                    [disabled]="item.Status===Completed?true:false
+                                    || item.Status===Cancelled?true:false"
+                                    (click)="onSubmit($event)">Cancel</button>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

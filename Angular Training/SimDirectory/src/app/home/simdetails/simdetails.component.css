@@ -1,0 +1,16 @@
+.heading{
+    text-align: center;
+}
+.Stock{
+    color:orange
+}
+.Active{
+    color:green
+}
+.Deactive{
+    color:red  
+}
+
+.btn-alignment{
+    margin-left:540px
+}

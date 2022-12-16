@@ -1,0 +1,12 @@
+.forms{
+
+    overflow: hidden;
+    width:492px;
+    height: 600px;
+    /* margin: auto; */
+    margin-top: 100px;
+}
+h1{
+    margin-bottom: 50px;
+    text-align: center;
+}

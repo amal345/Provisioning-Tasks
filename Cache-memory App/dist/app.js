@@ -7,6 +7,6 @@ const express_1 = __importDefault(require("express"));
 const statusroute_1 = require("./route/statusroute");
 const app = (0, express_1.default)();
 app.use('/', statusroute_1.router);
-app.listen(5000, () => {
+app.listen(3000, () => {
     console.log('Server listening on port');
 });

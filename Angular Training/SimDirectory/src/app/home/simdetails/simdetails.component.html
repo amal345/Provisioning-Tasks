@@ -1,0 +1,113 @@
+
+<div class="container mt-5 p-10 ">
+    <div class="heading mt-5"><h1>Sim Details</h1></div>
+    <div class="row justify-content-center mt-5 ">
+        <div class="col-4"></div>
+        <div class="col-1 d-flex justify-content-center">
+            <div class="btn-group " role="group"
+                aria-label="Basic
+                example">
+                <button type="button" class="btn btn-outline-success"
+                    [value]="Activation"
+                    [disabled]="state===Stock?false:true"
+                    (click)="onRequestSubmit($event)">Activate</button>
+                <button type="button" class="btn btn-outline-warning"
+                    [disabled]="state===Deactive?false:true"
+                    [value]="Reactivation" (click)="onRequestSubmit($event)">Reactivate</button>
+                <button type="button" class="btn btn-outline-danger"
+                    [disabled]="state===Active?false:true"
+                    [value]="Deactivation" (click)="onRequestSubmit($event)">Deactivate</button>
+            </div>
+        </div>
+        <div class="col-4 d-flex justify-content-end" *ngIf="user.admin">
+            <button type="button" class="btn btn-primary d-flex
+                justify-content-center" data-bs-toggle="modal"
+                data-bs-target="#staticBackdrop">
+                Add Sim
+            </button>
+        </div>
+    </div>
+    <div class="container mt-5">
+        <div class="row ">
+            <div class="table-responsive d-flex justify-content-center">
+                <table class="table table-bordered w-75">
+                    <thead>
+                        <tr>
+                            <th><input class="form-check-input" type="checkbox"
+                                    id="flexCheckDefault"
+                                    [(ngModel)]="parentSelector"
+                                    [id]="-1"
+                                    (change)="onChangeSim($event)">S.No</th>
+                            <th>Sim Number</th>
+                            <th>State</th>
+                        </tr>
+                    </thead>
+                    <tr *ngFor="let item of simdetails; let count= index">
+                        <td><input class="form-check-input" type="checkbox"
+                                value=""
+                                id="flexCheckDefault" [value]="item.state"
+                                [checked]="item.select" [id]="item.id"
+                                (change)="onChangeSim($event)"
+                                [disabled]="item.checking"> {{count+1}} </td>
+                        <td> {{item.simNumber}} </td>
+                        <td>
+                            <ul>
+                                <li [ngClass]="item.state">{{item.state}}</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Add sim -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
+        data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content modal-dialog-scrollable">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Add Sim</h1>
+                    <button type="button" (click)="addSimDetails()" class="btn-close"
+                        data-bs-dismiss="modal" aria-label="Close" ></button>
+                </div>
+                <div class="modal-body">
+                    <form action="">
+                        <div class="container">
+                            <div class="mb-3 mt-5">
+                                <label for="formGroupExampleInput"
+                                    class="form-label">Sim Number</label>
+                                <input type="text" class="form-control"
+                                    id="formGroupExampleInput"
+                                    placeholder="Sim Number"[value]="simNumber" [(ngModel)]="simNumber" name="simNumber">
+                            </div>
+                            <div class="mb-3">
+                                <label for="formGroupExampleInput2"
+                                    class="form-label">State</label>
+                                <input type="text" class="form-control"
+                                    id="formGroupExampleInput2"
+                                    placeholder="State of the Sim" [value]="simState" [(ngModel)]="simState" name="simState"[disabled]="true">
+                            </div>
+                            <div class="mb-3">
+                                <label for="formGroupExampleInput2"
+                                    class="form-label">Owner</label>
+                                <input type="text" class="form-control"
+                                    id="formGroupExampleInput2"
+                                    placeholder="Owner" [value]="userName" [(ngModel)]="simOwner" name="simOwner" [disabled]="true">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary"
+                        data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" (click)="onAddSim()" >Understood</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   

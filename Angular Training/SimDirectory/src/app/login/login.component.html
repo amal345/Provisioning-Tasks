@@ -1,0 +1,24 @@
+<div class="container-fluid forms">
+    <h1><span style="color:darkblue ;
+        font-size: 1.5em ;"><b>Connectivity</b> </span><span style="color:
+        rgb(242,
+        95, 4); font-size: 1.5em "><b> Pro</b> </span></h1>
+    <form class="row g-3"  >
+        <div class="col-12">
+            <label for="inputEmail4" class="form-label">Username</label>
+            <input type="text" id="username" name="username"  class="form-control" [(ngModel)]="username">
+        </div>
+        <div class="col-12">
+            <label for="inputPassword4" class="form-label">Password</label>
+            <input type="password" class="form-control" name="password" id="inputPassword4"
+            [(ngModel)]="password">
+        </div>
+        <div class="col-12 " style="margin-left: 180px;">
+            <button type="submit" class="btn btn-primary" (click)="onSubmit()">Sign in</button>
+        </div>
+        <div class="col-12" style="margin-left: 130px;">
+            <a routerLink="/home"><label for="inputPassword4"
+                    class="form-label">New User Register Here</label></a>
+        </div>
+    </form>
+</div>

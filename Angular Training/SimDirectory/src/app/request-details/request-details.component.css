@@ -1,0 +1,12 @@
+.heading{
+    text-align: center;
+}
+	
+.Completed{
+    color: green;
+    
+    
+}
+.pending{
+    color:red
+}

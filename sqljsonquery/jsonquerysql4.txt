@@ -1,0 +1,22 @@
+--SELECT empid, empdetails
+	--FROM public.employedetails;
+	
+--insert into employedetails (empdetails) values ('{"name":"Ajith", "hobbies":["Singing","Gaming","Movies"]}')
+
+select * from employedetails;
+
+select empdetails->'name' as name from employedetails;
+
+select * from employedetails where empdetails->'name'='"john"'
+
+select jsonb_array_elements_text(empdetails->'hobbies') as hobbiesn from employedetails
+
+select distinct(jsonb_array_elements_text(empdetails->'hobbies')) as hobbiesn from employedetails
+
+select empid,jsonb_array_elements_text(empdetails->'hobbies') as hobbies from employedetails
+
+select * from employedetails
+
+select empid, empdetails from employedetails where empdetails->'hobbies' @> '["Gaming"]'::jsonb
+
+select empid, empdetails from employedetails where empdetails->'hobbies' @> '["Movies"]'::jsonbs
